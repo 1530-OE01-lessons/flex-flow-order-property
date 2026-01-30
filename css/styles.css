@@ -1,0 +1,92 @@
+:root {
+    --heading: #1f2937;
+    --body: #4b5563;
+    --border: 1px solid #e5e7eb;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--body);
+}
+
+/** utility classes **/
+.flex-container {
+    display: flex;
+    /**shorthand for flex-direction and flex-wrap - takes one or two values**/
+    flex-flow: column;
+    /** long hand version **/
+    /* flex-direction: column; */
+    gap: 1rem;
+}
+
+.inner-container {
+    margin: 0 auto;
+    max-width: 80rem; /**1280px**/
+    padding: 3rem 1rem
+}
+
+/** typography **/
+h1, h2 {
+    color: var(--heading);
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 3rem; /**48px**/
+    margin: 2rem 0 0;
+    width: 100%;
+    text-align: center;
+}
+p {
+    margin-bottom: 1rem;;
+}
+
+/** cards **/
+.card{
+    border: var(--border);
+    border-radius: 0.25rem;
+    box-shadow: var(--shadow);
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    padding: 2rem 1rem;
+}
+img {  
+    border-radius: 0.25rem; 
+}
+/** order property **/
+/** 
+    every flex item has an order value of 0 by default 
+    If we want something to appear first, we give it a order value of less than 0 (i.e -1). If we want to appear last or after than we give a value that's greater than zero
+**/
+
+h2 {
+    order: -1;
+    text-align: center;
+}
+
+/** smallish - medium screens **/
+@media (min-width: 640px) {
+    .flex-container {
+        flex-flow: row wrap;
+    }
+    /** we want two cards, and a gutter/space of 1rem between the cards **/
+    .card {
+        width: calc((100% / 2) - (1rem / 2));
+    }
+    h2 {
+        order: 0;
+        margin-top: 1rem;
+        text-align: left;
+    }
+}
+
+@media (min-width: 1080px) {
+    /** We want three cards, and there needs to be 2 gutters of 1rem each (2rem total). **/
+    .card {
+        width: calc((100% / 3) - (2rem / 3));
+        width: calc(100% / 3) - 1rem;
+    }
+}
